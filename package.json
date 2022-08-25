@@ -1,6 +1,6 @@
 {
   "name": "kolekt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
   "main": "main.ts",
   "scripts": {
