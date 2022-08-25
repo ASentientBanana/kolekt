@@ -2,7 +2,7 @@ type middlewareType<T> = (responseBody: any) => T;
 
 interface returnType<T> {
   status: { code: number, message: string }
-  data: T | {}
+  data?: T 
 }
 
 interface IProps<T> {
@@ -27,7 +27,7 @@ export const kolekt = async <T>(options: Omit<IProps<T>, 'middleware' | 'onReque
       status: { code: response.status, message: response.statusText },
       data: _middleware ? _middleware(responseData) : responseData
     };
-  } else return { status: { code: response.status, message: response.statusText }, data: {} };
+  } else return { status: { code: response.status, message: response.statusText } };
 }
 
 const useKolekt = <T = any>({ url, middleware, method, body, onRequestStart, onRequestEnd }: IProps<T>) => {
