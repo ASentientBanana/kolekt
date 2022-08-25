@@ -1,6 +1,6 @@
 {
-  "name": "kolekt",
-  "version": "1.0.0",
+  "name": "kolekter",
+  "version": "1.2.0",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
   "main": "util.ts",
   "types": "dist/util.d.ts",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASentientBanana/kolekt.git"
+    "url": "https://github.com/ASentientBanana/kolekter.git"
   },
   "author": "ASentientBanana",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ASentientBanana/kolekt/issues"
+    "url": "https://github.com/ASentientBanana/kolekter/issues"
   },
-  "homepage": "https://github.com/ASentientBanana/kolekt#readme",
+  "homepage": "https://github.com/ASentientBanana/kolekter#readme",
 
   "devDependencies": {
     "typescript": "^4.7.4"
