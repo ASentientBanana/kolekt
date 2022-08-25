@@ -33,7 +33,7 @@ export const kolekt = async <T>(options: Omit<IProps<T>, 'middleware' | 'onReque
 const useKolekt = <T = any>({ url, middleware, method, body, onRequestStart, onRequestEnd }: IProps<T>) => {
   const sendRequest = async (_middleware?: middlewareType<T>):Promise<returnType<T>> => {
     if (onRequestStart) onRequestStart();
-    const response = await kolekt({ url, method, body }, _middleware);
+    const response = await kolekt<T>({ url, method, body }, _middleware);
     response.data = middleware ? middleware(response.data) : response.data;
     if (onRequestEnd) onRequestEnd(response);
     return response;
