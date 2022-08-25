@@ -1,8 +1,9 @@
 {
   "name": "kolekt",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
-  "main": "main.ts",
+  "main": "kolekt.ts",
+  "types": "dist/kolekt.d.ts",
   "scripts": {
     "build":"tsc --build",
     "clean": "tsc --build --clean",
