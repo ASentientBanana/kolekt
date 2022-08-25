@@ -1,20 +1,20 @@
 type middlewareType = (responseBody: any) => any;
 
-interface returnData {
+interface returnData<T> {
   status: { code: number, message: string }
-  data: any
+  data: T
 }
 
-interface IProps {
+interface IProps<T> {
   url: string,
   method: "OPTIONS" | "GET" | "HEAD" | "PUT" | "POST" | "DELETE" | "PATCH",
   middleware?: middlewareType,
   body?: any,
-  onRequestEnd?: (returnData: returnData) => void,
+  onRequestEnd?: (returnData: returnData<T | any>) => void,
   onRequestStart?: () => void,
 }
 
-export const kolekt = async <T>(options: Omit<IProps, 'middleware' | 'onRequestStart' | 'onRequestEnd'>, _middleware?: (_body: any) => any): Promise<returnData> => {
+export const kolekt = async <T>(options: Omit<IProps<T>, 'middleware' | 'onRequestStart' | 'onRequestEnd'>, _middleware?:middlewareType): Promise<returnData<T|any>> => {
   const requestParamas = {
     method: options.method,
     body: options.body
@@ -30,8 +30,8 @@ export const kolekt = async <T>(options: Omit<IProps, 'middleware' | 'onRequestS
   } else return { status: { code: response.status, message: response.statusText }, data: {} };
 }
 
-const useKolekt = ({ url, middleware, method, body, onRequestStart, onRequestEnd }: IProps) => {
-  const sendRequest = async (_middleware?: middlewareType) => {
+const useKolekt = <T>({ url, middleware, method, body, onRequestStart, onRequestEnd }: IProps<T>) => {
+  const sendRequest = async (_middleware?: middlewareType):Promise<ReturnType<T | any>> => {
     if (onRequestStart) onRequestStart();
     const response = await kolekt({ url, method, body }, _middleware);
     response.data = middleware ? middleware(response.data) : response.data;

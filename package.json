@@ -1,9 +1,10 @@
 {
   "name": "kolekt",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
   "main": "main.ts",
   "scripts": {
+    "build":"tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/ASentientBanana/kolekt/issues"
   },
-  "homepage": "https://github.com/ASentientBanana/kolekt#readme"
+  "homepage": "https://github.com/ASentientBanana/kolekt#readme",
+
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
 }
