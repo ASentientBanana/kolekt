@@ -12,6 +12,7 @@ interface IProps<T> {
   body?: any,
   onRequestEnd?: (returnData: IReturnType<T>) => void,
   onRequestStart?: () => void,
+  onRequestError?:(rej:any) => void,
   headers?: Headers
 }
 
@@ -22,21 +23,24 @@ export const kolekt = async <T = any>(options: Omit<IProps<T>, 'middleware' | 'o
     method: options.method,
     body: options.body
   };
-
-  const response = await fetch(options.url, requestParams);
-  if (response.headers.get('content-type')?.includes('application/json')) {
-    const responseData = await response.json();
-    return {
-      status: { code: response.status, message: response.statusText },
-      data: _middleware ? _middleware(responseData) : responseData
-    };
-  } else return { status: { code: response.status, message: response.statusText } };
+    try {
+      const response = await fetch(options.url, requestParams);
+      if (response.headers.get('content-type')?.includes('application/json')) {
+        const responseData = await response.json();
+        return {
+          status: { code: response.status, message: response.statusText },
+          data: _middleware ? _middleware(responseData) : responseData
+        };
+      } else return { status: { code: response.status, message: response.statusText } };
+    } catch (error) {
+      if(options.onRequestError)options.onRequestError(error);
+      return { status: { code: 0, message: 'There was a error with the request.' } }
+    }
 }
-
-const useKolekt = <T = any>({ url, middleware, method, body, onRequestStart, onRequestEnd }: IProps<T>) => {
+const useKolekt = <T = any>({ url, middleware, method, body, onRequestError,onRequestStart, onRequestEnd }: IProps<T>) => {
   const sendRequest = async (_middleware?: middlewareType<T>):Promise<IReturnType<T>> => {
     if (onRequestStart) onRequestStart();
-    const response = await kolekt<T>({ url, method, body }, _middleware);
+    const response = await kolekt<T>({ url, method, body, onRequestError }, _middleware);
     response.data = middleware ? middleware(response.data) : response.data;
     if (onRequestEnd) onRequestEnd(response);
     return response;

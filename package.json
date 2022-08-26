@@ -1,12 +1,12 @@
 {
   "name": "kolektor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
   "main": "index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build":"tsc --build",
-    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,9 +18,6 @@
   "bugs": {
     "url": "https://github.com/ASentientBanana/kolektor/issues"
   },
-  "homepage": "https://github.com/ASentientBanana/kolektor#readme",
-
-  "devDependencies": {
-    "typescript": "^4.7.4"
-  }
+  "homepage": "https://github.com/ASentientBanana/kolektor#readme"
+  
 }
