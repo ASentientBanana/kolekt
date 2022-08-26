@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ASentientBanana/kolekter.git"
+    "url": "https://github.com/ASentientBanana/kolektor.git"
   },
   "author": "ASentientBanana",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/ASentientBanana/kolekter/issues"
+    "url": "https://github.com/ASentientBanana/kolektor/issues"
   },
-  "homepage": "https://github.com/ASentientBanana/kolekter#readme",
+  "homepage": "https://github.com/ASentientBanana/kolektor#readme",
 
   "devDependencies": {
     "typescript": "^4.7.4"
