@@ -1,9 +1,9 @@
 {
   "name": "kolektor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wrapper for the browser fetch api with middleware supprot and request lifecycle methods.",
-  "main": "util.ts",
-  "types": "dist/util.d.ts",
+  "main": "index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build":"tsc --build",
     "clean": "tsc --build --clean",
